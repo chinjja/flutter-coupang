@@ -29,6 +29,7 @@ class CommerceRepository {
             return handler.next(options);
           },
           onError: (error, handler) async {
+            print(error);
             if (error.response?.statusCode == HttpStatus.unauthorized) {
               if (await _refresh()) {
                 final response = await this.dio.request(

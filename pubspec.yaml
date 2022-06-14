@@ -50,6 +50,7 @@ dev_dependencies:
     sdk: flutter
   mocktail: ^0.3.0
   bloc_test: ^9.0.3
+  http_mock_adapter: ^0.3.3
   build_runner: ^2.1.11
   copy_with_extension_gen: ^4.0.2
   json_serializable: ^6.2.0
