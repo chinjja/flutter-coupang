@@ -24,12 +24,7 @@ void main() {
 
     testWidgets('App should be loaded', (tester) async {
       when(() => repository.onAuthentication).thenAnswer((_) => Stream.empty());
-      await tester.pumpWidget(RepositoryProvider.value(
-        value: repository,
-        child: MaterialApp(
-          home: App(),
-        ),
-      ));
+      await tester.pumpWidget(App(commerceRepository: repository));
       expect(find.byType(App), findsOneWidget);
     });
   });
@@ -44,11 +39,9 @@ void main() {
       bloc = MockAppCubit();
       widget = RepositoryProvider.value(
         value: repository,
-        child: MaterialApp(
-          home: BlocProvider.value(
-            value: bloc,
-            child: AppView(),
-          ),
+        child: BlocProvider.value(
+          value: bloc,
+          child: AppView(),
         ),
       );
     });

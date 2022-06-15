@@ -7,13 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  final CommerceRepository commerceRepository;
+  const App({Key? key, required this.commerceRepository}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AppCubit(context.read<CommerceRepository>()),
-      child: const AppView(),
+    return RepositoryProvider.value(
+      value: commerceRepository,
+      child: BlocProvider(
+        create: (context) => AppCubit(context.read<CommerceRepository>()),
+        child: const AppView(),
+      ),
     );
   }
 }
